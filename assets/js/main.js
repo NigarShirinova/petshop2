@@ -13,9 +13,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     loader.classList.remove("d-none");
     try {
         // Load cards from local storage
-        cards = JSON.parse(localStorage.getItem('cards')) || []; // Fetching from local storage
+        const response = await getAllData(API_BASE_URL,endpoints.catalog)
+        // cards = JSON.parse(localStorage.getItem('cards')) || []; // Fetching from local storage
         loader.classList.add("d-none");
-        renderCardsHTML(cards);
+        renderCardsHTML(response);
     } catch (error) {
         console.error('Error fetching data:', error);
         loader.classList.add("d-none");
